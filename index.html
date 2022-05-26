@@ -20,9 +20,10 @@
 				url: getQueryVariable('url'),
 			},
 			danmaku: {
-				api: 'danmu.json',
+				id: getQueryVariable('name'),
+				api: 'danmu.json?',
 				addition: [
-					getQueryVariable('name') + '_danmu.json'
+					getQueryVariable('name') + '_danmu.json?'
 				]
 			}
 		});
