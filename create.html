@@ -1,0 +1,26 @@
+<html>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+  <title>创建视频预览</title>
+  <style>
+	* {
+		margin: 0;
+		padding: 0;
+	}
+  </style>
+  <body align="center"  style="padding: 20px;">
+    <div>
+		<div style="padding: 20px;">视频名称：<input id="name" /></div>
+		<div style="padding: 20px;">视频地址：<input id="url" /></div>
+		<div style="padding: 20px;"><button style="padding: 2px 10px;" onclick="create()">创 建</button></div>
+	</div>
+    <script>
+		function create()
+		{
+			const name = document.getElementById('name');
+			const url = document.getElementById('url');
+			const jsonStr = JSON.stringify({"name": name, "url": url});
+			window.location.href = '?data=' + btoa(encodeURIComponent(jsonStr));
+		}
+    </script>
+  </body>
+</html>
