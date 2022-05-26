@@ -19,7 +19,7 @@
 			const name = document.getElementById('name');
 			const url = document.getElementById('url');
 			const jsonStr = JSON.stringify({"name": name, "url": url});
-			window.location.href = '?data=' + btoa(encodeURIComponent(jsonStr));
+			window.location.href = '/video-preview?data=' + btoa(encodeURIComponent(jsonStr));
 		}
     </script>
   </body>
