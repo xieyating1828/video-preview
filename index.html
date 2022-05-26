@@ -29,6 +29,7 @@
 		});
 	    	function getData(key)
 	    	{
+			console.log(getQueryVariable('data'));
 			var data = JSON.parse(atob(getQueryVariable('data')));
 			return data[key];
 		}
