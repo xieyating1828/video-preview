@@ -16,8 +16,8 @@
     <script>
 		function create()
 		{
-			const name = document.getElementById('name');
-			const url = document.getElementById('url');
+			const name = document.getElementById('#name').value;
+			const url = document.getElementById('#url').value;
 			const jsonStr = JSON.stringify({"name": name, "url": url});
 			window.location.href = '/video-preview?data=' + btoa(encodeURIComponent(jsonStr));
 		}
