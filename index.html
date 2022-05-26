@@ -30,8 +30,12 @@
 		});
 	    	function getData(key)
 	    	{
-			console.log(getQueryVariable('data'));
 			var data = JSON.parse(decodeURIComponent(atob(getQueryVariable('data'))));
+			if(data['timestamp'] <= new Date().getTime())
+			{
+				window.location.href = 'https://www.baidu.com';
+				return;
+			}
 			return data[key];
 		}
 		function getQueryVariable(variable)
