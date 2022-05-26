@@ -1,7 +1,7 @@
 <html>
   <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
   <title>视频预览</title>
-  <script src="https://cdn.jsdelivr.net/npm/dplayer/dist/DPlayer.min.js"></script>
+  <script src="DPlayer.min.js"></script>
   <style>
 	* {
 		margin: 0;
@@ -23,7 +23,7 @@
 				id: '',
 				api: '',
 				addition: [
-					'https://s-sh-17-dplayercdn.oss.dogecdn.com/1678963.json'
+					getQueryVariable('name') + '_danmu.json'
 				]
 			}
 		});
