@@ -17,16 +17,21 @@
 			loop: true,
 			playbackSpeed: [0.1, 0.2, 0.3, 0.4, 0.5, 1, 2, 3, 4, 5],
 			video: {
-				url: getQueryVariable('url'),
+				url: getData('url'),
 			},
 			danmaku: {
-				id: getQueryVariable('name'),
+				id: getData('name'),
 				api: 'danmu.json?',
 				addition: [
-					getQueryVariable('name') + '_danmu.json?'
+					getData('name') + '_danmu.json?'
 				]
 			}
 		});
+	    	function getData(key)
+	    	{
+			var data = JSON.parse(atob(getQueryVariable('data')));
+			return data[key];
+		}
 		function getQueryVariable(variable)
 		{
 			var query = window.location.search.substring(1);
