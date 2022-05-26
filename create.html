@@ -1,6 +1,7 @@
 <html>
   <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
   <title>创建视频预览</title>
+  <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
   <style>
 	* {
 		margin: 0;
@@ -12,6 +13,7 @@
 		<div style="padding: 20px;">视频名称：<input id="name" /></div>
 		<div style="padding: 20px;">视频地址：<input id="url" /></div>
 		<div style="padding: 20px;"><button style="padding: 2px 10px;" onclick="create()">创 建</button></div>
+		<input style="opacity: 0;" id="copyInput" />
 	</div>
     <script>
 		function create()
@@ -19,7 +21,23 @@
 			const name = document.getElementById('name').value;
 			const url = document.getElementById('url').value;
 			const jsonStr = JSON.stringify({"name": name, "url": url});
-			window.location.href = '/video-preview/?data=' + btoa(encodeURIComponent(jsonStr));
+			const playerUrl = 'https://xieyating1828.github.io/video-preview/?data=' + btoa(encodeURIComponent(jsonStr));
+			const pass = rand(1000, 9999);
+			$.ajax({
+				type: "GET",
+				url: 'http://api.985.so/api.php?url=' + encodeURIComponent(playerUrl) +  '&apikey=15622115729@1907e95a0e5319e5e01ab96667655807&mima=' + pass,
+				dataType: 'text',
+				success: function(res) {
+					var input = document.getElementById('copyInput');
+					input.value = "地址：" + res + " 密码：" + pass;
+					input.select();
+					document.execCommand('Copy');
+				}
+			});
+		}
+		function rand(min, max)
+		{
+		    return Math.floor(Math.random() * (max - min)) + min;
 		}
     </script>
   </body>
