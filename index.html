@@ -2,15 +2,41 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
   <title>视频预览</title>
   <script src="https://cdn.jsdelivr.net/npm/dplayer/dist/DPlayer.min.js"></script>
+  <style>
+	* {
+		margin: 0;
+		padding: 0;
+	}
+  </style>
   <body>
     <div id="dplayer"></div>
     <script>
-      const dp = new DPlayer({
-          container: document.getElementById('dplayer'),
-          video: {
-              url: 'https://kodbox-files.oss-ap-southeast-1.aliyuncs.com/202205/19_7486e7f3/IMG_5075.MOV.mov?Expires=1653535541&OSSAccessKeyId=TMP.3KjmEo1ScGgTt81PCbfK8yzvRwaEya9VDQ9w7Rm6eo7A7biVt7PVQwssAgsgpSXFYiA81sAa18zYnvLVvEdxccAEp5TVnz&Signature=PbkB6BkDnRHgsBbr7NvJUJE5%2Beo%3D',
-          },
-      }); 
+		const dp = new DPlayer({
+			container: document.getElementById('dplayer'),
+			autoplay: true,
+			loop: true,
+			playbackSpeed: [0.1, 0.2, 0.3, 0.4, 0.5, 1, 2, 3, 4, 5],
+			video: {
+				url: getQueryVariable('url'),
+			},
+			danmaku: {
+				id: '',
+				api: '',
+				addition: [
+					'https://s-sh-17-dplayercdn.oss.dogecdn.com/1678963.json'
+				]
+			}
+		});
+		function getQueryVariable(variable)
+		{
+			var query = window.location.search.substring(1);
+			var vars = query.split("&");
+			for (var i=0;i<vars.length;i++) {
+				var pair = vars[i].split("=");
+				if(pair[0] == variable){return pair[1];}
+			}
+			return(false);
+		}
     </script>
   </body>
 </html>
